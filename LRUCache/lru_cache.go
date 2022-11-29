@@ -5,14 +5,14 @@ import (
 )
 
 type LRUCache struct {
-	cap   int
-	len   int
+	cap   uint
+	len   uint
 	data  map[interface{}]interface{}
 	queue *List
 	sync.RWMutex
 }
 
-func NewLRUCache(cap int) *LRUCache {
+func NewLRUCache(cap uint) *LRUCache {
 	return &LRUCache{
 		cap:   cap,
 		len:   0,
@@ -21,11 +21,15 @@ func NewLRUCache(cap int) *LRUCache {
 	}
 }
 
-func (c *LRUCache) Len() int {
+func (c *LRUCache) Len() uint {
+	c.RLock()
+	defer c.RUnlock()
 	return c.len
 }
 
-func (c *LRUCache) Cap() int {
+func (c *LRUCache) Cap() uint {
+	c.RLock()
+	defer c.RUnlock()
 	return c.cap
 }
 

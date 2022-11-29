@@ -7,6 +7,7 @@ import (
 
 func main() {
 	c := LRUCache.NewLRUCache(5)
+
 	c.Add("1", "1")
 	c.Add("2", "2")
 	c.Add("3", "3")
@@ -25,6 +26,11 @@ func main() {
 	printC(c)
 
 	c.Remove("ad")
+	//c.Remove("6")
+
+	printC(c)
+	fmt.Println(c.Get("6"))
+	fmt.Println(c.Get("1"))
 	printC(c)
 }
 

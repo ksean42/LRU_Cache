@@ -1,8 +1,8 @@
 package LRUCache
 
 type ICache interface {
-	Len() int
-	Cap() int
+	Len() uint
+	Cap() uint
 	Add(key, value interface{})
 	Get(key interface{}) (interface{}, bool)
 	Remove(key interface{})
